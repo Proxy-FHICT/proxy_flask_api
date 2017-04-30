@@ -9,6 +9,6 @@ and a list of events at `:/events`
 ## Hosting
 hosted at *heroku* : https://proxy-ict-api.herokuapp.com/ 
 
-### Any proposals are welcome
-(:v:)
+## Any proposals are welcome
+:v:
 
