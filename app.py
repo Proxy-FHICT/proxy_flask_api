@@ -1,9 +1,11 @@
 from flask import Flask, abort
+from flask_cors import CORS, cross_origin
 import requests
 import json 
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 def geteventdata(limit=25):
 	# basic way to get the env data for the facebook api
