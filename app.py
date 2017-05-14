@@ -1,8 +1,9 @@
-from flask import Flask, abort
+from flask import Flask, abort, send_from_directory
 from flask_cors import CORS, cross_origin
 import requests
 import json 
 import os
+import random
 
 app = Flask(__name__)
 CORS(app)
@@ -53,6 +54,28 @@ def eventslimit(limit):
 		r = geteventdata(limit)
 		return json.dumps(r.json()['data'],indent=4)
 	except Exception as inst:
+		# console logging
+		print(type(inst))
+		print(inst.args)
+		print(inst)
+		abort(500)
+		
+@app.route("/img/random")		
+def imagerandom():
+	try:
+		files = [];	
+		for filename in os.listdir("./img"):
+			print(os.path.join(".\\img", filename))
+			files.append(filename)
+		# randomly select a file	
+		path=".\\img\\"
+		try:
+			path = random.choice(files)
+		except:
+			path="14352107_887952714668641_7104487585079782535_o.jpg"
+		return send_from_directory('./img', path)
+		
+	except Exception as inst:		
 		# console logging
 		print(type(inst))
 		print(inst.args)
