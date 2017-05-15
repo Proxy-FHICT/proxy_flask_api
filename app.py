@@ -82,5 +82,18 @@ def imagerandom():
 		print(inst)
 		abort(500)
 		
+@app.route("img/welcome")
+def imagewelcome():
+	try:
+		path = "welcome.jpeg"
+		return send_from_directory('./img/welcome_bg', path)
+		
+	except Exception as inst:		
+		# console logging
+		print(type(inst))
+		print(inst.args)
+		print(inst)
+		abort(500)		
+		
 if __name__ == "__main__":
     app.run(use_reloader=True)
